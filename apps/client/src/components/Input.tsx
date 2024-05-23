@@ -1,19 +1,18 @@
-import { type FormEvent, useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
+import { type FormEvent, useState } from 'react'
 
 function Input() {
 	const [text, setText] = useState('')
 
 	const mutation = useMutation({
 		mutationFn: (messageText: string) => {
-			return fetch('http://localhost:3210/messages', {
+			return fetch('/messages', {
 				method: 'post',
 				body: JSON.stringify({ text: messageText.trim() }),
 			})
 		},
 		onMutate: () => {
 			setText('')
-			alert('ok')
 		},
 		onError: (e) => {
 			alert(e)

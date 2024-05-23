@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import Input from './Input.tsx'
 
 async function getMessages() {
-	const res = await fetch('http://localhost:3210/messages')
+	const res = await fetch('/messages')
 	const { data } = (await res.json()) as {
 		data: { id: string; text: string }[]
 	}
@@ -10,11 +11,17 @@ async function getMessages() {
 	return data
 }
 
-function Chat() {
-	const { isPending, isError, data, error } = useQuery({
+function Chat(props: {
+	lastMessageId?: string
+}) {
+	const { isPending, isError, data, error, refetch } = useQuery({
 		queryKey: ['messages'],
 		queryFn: getMessages,
 	})
+
+	useEffect(() => {
+		refetch()
+	}, [props.lastMessageId, refetch])
 
 	if (isPending) {
 		return <>...</>
