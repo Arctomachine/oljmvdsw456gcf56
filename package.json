@@ -1,0 +1,11 @@
+{
+	"name": "oljmvdsw456gcf56",
+	"type": "module",
+	"devDependencies": {
+		"@biomejs/biome": "1.7.3"
+	},
+	"peerDependencies": {
+		"typescript": "^5.0.0"
+	},
+	"workspaces": ["apps/*"]
+}
