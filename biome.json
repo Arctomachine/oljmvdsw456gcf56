@@ -5,7 +5,8 @@
   },
   "files": {
     "include": [
-      "apps/server/src"
+      "apps/server/src",
+      "apps/client/src"
     ]
   },
   "linter": {
