@@ -24,6 +24,7 @@ function App() {
 			}
 		})
 
+		// todo: можно добавить переподключение, если что-то сбилось
 		webSocket.addEventListener('error', (event) => {
 			console.log('websocket error', event)
 		})

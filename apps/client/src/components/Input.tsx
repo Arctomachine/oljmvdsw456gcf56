@@ -22,6 +22,7 @@ function Input() {
 
 	async function onSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault()
+		// todo: можно добавить валидацию ввода
 		mutation.mutate(text)
 	}
 
