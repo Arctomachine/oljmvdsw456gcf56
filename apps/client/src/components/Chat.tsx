@@ -1,12 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
 import { useEffect } from 'react'
+import type { FetchedMessages } from '../../../../types.ts'
 import Input from './Input.tsx'
 
 async function getMessages() {
 	const res = await fetch('/messages')
-	const { data } = (await res.json()) as {
-		data: { id: string; text: string }[]
-	}
+	const { data } = (await res.json()) as FetchedMessages
 
 	return data
 }

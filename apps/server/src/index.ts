@@ -1,14 +1,10 @@
 import * as crypto from 'node:crypto'
 import * as http from 'node:http'
 import { WebSocket, WebSocketServer } from 'ws'
+import type { Message, SentMessage } from '../../../types.ts'
 
 const messages: Message[] = []
 const webSocketClients: WebSocket[] = []
-
-type Message = {
-	id: string
-	text: string
-}
 
 function onNewMessage(text: string) {
 	const message: Message = {
@@ -49,9 +45,7 @@ const server = http.createServer((req, res) => {
 		})
 		req.on('end', () => {
 			// todo: можно добавить валидацию ввода
-			const message = JSON.parse(Buffer.concat(data).toString()) as {
-				text: string
-			}
+			const message = JSON.parse(Buffer.concat(data).toString()) as SentMessage
 
 			onNewMessage(message.text)
 
