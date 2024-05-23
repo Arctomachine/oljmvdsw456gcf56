@@ -4,7 +4,9 @@
     "enabled": true
   },
   "files": {
-    "include": []
+    "include": [
+      "apps/server/src"
+    ]
   },
   "linter": {
     "enabled": true,
